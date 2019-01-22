@@ -1,6 +1,16 @@
 const path = require('path');
 const webpack = require('webpack');
 const CssWebpackPlugin = require('mini-css-extract-plugin');
+const wplib = [
+	'blocks',
+	'components',
+	'date',
+	'editor',
+	'element',
+	'i18n',
+	'utils',
+	'data'
+];
 
 let debug = process.env.NODE_ENV !== 'production';
 let extractEditorStyles = new CssWebpackPlugin({
@@ -21,20 +31,20 @@ module.exports = {
 	},
 	/**
 	 * Setting `externals` allows the use of `import __ from __` syntax for WP's
-	 * built-in JS libraries. From my tests, you can loop through the libraries like
-	 * they do at the link, but if one of the libraries isn't in `node_modules`,
-	 * none of the libraries get externalized correctly. In this particular case,
-	 * we'll only load the libraries when we need them, but it's something to keep
-	 * in mind.
+	 * built-in JS libraries. They first need to be listed as dependencies for
+	 * the script that's designated as `editor_script` when you first call
+	 * `register_block_type` in PHP.
 	 *
 	 * @link https://www.cssigniter.com/importing-gutenberg-core-wordpress-libraries-es-modules-blocks/
 	 * @link https://webpack.js.org/configuration/externals/
 	 */
-	externals: {
-		'@wordpress/blocks': {
-			window: [ 'wp', 'blocks' ]
-		}
-	},
+	externals: wplib.reduce((externals, lib) => {
+		externals[`@wordpress/${lib}`] = {
+			window: ['wp', lib]
+		};
+
+		return externals;
+	}, {}),
 	module: {
 		rules: [
 			{
