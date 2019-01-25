@@ -1,6 +1,14 @@
 import { G, Path, SVG } from '@wordpress/components';
 import { PlainText, RichText, URLInput, InspectorControls } from '@wordpress/editor';
 import { Fragment } from '@wordpress/element';
+const colors = [
+	'Black',
+	'Gray',
+	'Red',
+	'Yellow',
+	'Blue',
+	'Purple'
+];
 
 export const name = 'limeguten/button';
 export const settings = {
@@ -20,6 +28,13 @@ export const settings = {
 			default: ''
 		}
 	},
+	styles: colors.map((color, index) => {
+		return {
+			name: color.toLowerCase().replace( ' ', '-' ),
+			label: color,
+			isDefault: ( 0 === index ) ? true : false
+		};
+	} ),
 
 	edit( { attributes, className, setAttributes } ) {
 		const { url, text } = attributes;
@@ -44,7 +59,7 @@ export const settings = {
 		 */
 		return (
 			<div className={ className }>
-				<a className={ 'button'} href={ url }>{ text }</a>
+				<a className={ 'button' } href={ url }>{ text }</a>
 			</div>
 		);
 	}

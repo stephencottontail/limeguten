@@ -3,7 +3,7 @@
 .wp-block-limeguten-button {
 
 	.editor-plain-text {
-		background-color: $black;
+		background-color: map-get( $colors, black );
 		border-radius: 0;
 		color: $white;
 		padding: #{$button-padding};
@@ -13,6 +13,12 @@
 
 		&:focus {
 			color: $white;
+		}
+
+		@each $name,$value in $colors {
+			@at-root .is-style-#{$name}#{&} {
+				background-color: $value;
+			}
 		}
 	}
 

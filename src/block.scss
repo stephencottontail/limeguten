@@ -3,8 +3,8 @@
 .wp-block-limeguten-button {
 
 	.button {
-		background-color: $black;
-		border: 2px solid $black;
+		background-color: map-get( $colors, black );
+		border: 2px solid map-get( $colors, black );
 		border-radius: 0;
 		color: $white;
 		padding: #{$button-padding};
@@ -13,7 +13,20 @@
 		&:hover,
 		&:focus {
 			background-color: $white;
-			color: $black
+			color: map-get( $colors, black );
+		}
+
+		@each $name,$value in $colors {
+			@at-root .is-style-#{$name}#{&} {
+				background-color: $value;
+				border-color: $value;
+
+				&:hover,
+				&:focus {
+					background-color: $white;
+					color: $value;
+				}
+			}
 		}
 	}
 
