@@ -15,6 +15,22 @@
 			color: $white;
 		}
 
+		&::-webkit-input-placeholder {
+			color: map-get( $colors, gray );
+		}
+
+		&::-moz-placeholder {
+			color: map-get( $colors, gray );
+		}
+
+		&:-ms-input-placeholder {
+			color: map-get( $colors, gray );
+		}
+
+		&:-moz-placeholder {
+			color: map-get( $colors, gray );
+		}
+
 		@each $name,$value in $colors {
 			@at-root .is-style-#{$name}#{&} {
 				background-color: $value;

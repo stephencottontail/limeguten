@@ -43,7 +43,7 @@ export const settings = {
 
 		return (
 			<div className={ className }>
-				<PlainText onChange={ changeText } value={ text } placeholder={ 'Click here to edit text' } />
+				<PlainText onChange={ changeText } value={ text } placeholder={ 'Click here...' } />
 				<URLInput className={ className } onChange={ changeUrl } value={ attributes.url } />
 			</div>
 		);
