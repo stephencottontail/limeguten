@@ -1,0 +1,19 @@
+@import 'styles/common';
+
+.wp-block-limeguten-button {
+
+	.editor-plain-text {
+		background-color: $black;
+		border-radius: 0;
+		color: $white;
+		padding: #{$button-padding};
+		text-align: center;
+		width: auto;
+		max-width: 300px;
+
+		&:focus {
+			color: $white;
+		}
+	}
+
+}
