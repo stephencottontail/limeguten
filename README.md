@@ -12,3 +12,4 @@ Some Gutenberg stuff.
 * WordPress recommends that the majority of your styles live in whatever stylesheet is registered as `style` and editor-specific styles live in whatever stylesheet is registered as `editor-style`. This works because both stylesheets are loaded in the editor while `editor-style` does not load on the frontend.
 * Right now, only the colors are implemented; we'll implement the "ghost"-style buttons later.
   * Not all colors are implemented; I didn't feel like checking which button colors required dark text
+* There's no difference between development and production environment in webpack
