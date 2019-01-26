@@ -23,6 +23,12 @@
 			'editor_style'  => 'limeguten-editor-style',
 			'style'         => 'limeguten-block-style'
 		) );
+
+		register_block_type( 'limeguten/sixty-forty', array(
+			'editor_script' => 'limeguten-blocks',
+			'editor_style'  => 'limeguten-editor-style',
+			'style'         => 'limeguten-block-style'
+		) );
 	} );
 
 	/**
