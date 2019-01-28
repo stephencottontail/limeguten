@@ -28,7 +28,7 @@ export const settings = {
 			default: ''
 		}
 	},
-	styles: colors.map((color, index) => {
+	styles: colors.map( ( color, index ) => {
 		return {
 			name: color.toLowerCase().replace( ' ', '-' ),
 			label: color,
@@ -36,10 +36,10 @@ export const settings = {
 		};
 	} ),
 
-	edit( { attributes, className, setAttributes } ) {
+	edit({ attributes, className, setAttributes }) {
 		const { url, text } = attributes;
-		let changeText = ( text ) => setAttributes( { text: text } );
-		let changeUrl = ( url, post ) => setAttributes( { url, text: (post && post.title) || attributes.text } );
+		let changeText = ( text ) => setAttributes({ text: text });
+		let changeUrl = ( url, post ) => setAttributes({ url, text: ( post && post.title ) || attributes.text });
 
 		return (
 			<div className={ className }>
@@ -49,7 +49,7 @@ export const settings = {
 		);
 	},
 
-	save( { attributes, className } ) {
+	save({ attributes, className }) {
 		const { url, text } = attributes;
 
 		/**

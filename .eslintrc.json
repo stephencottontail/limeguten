@@ -1,0 +1,10 @@
+{
+  "parser": "babel-eslint",
+  "plugins": [ "react" ],
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "extends": "wordpress"
+}

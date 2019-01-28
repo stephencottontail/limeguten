@@ -19,7 +19,7 @@ export const settings = {
 		html: false
 	},
 
-	edit( { attributes, className, setAttributes } ) {
+	edit({attributes, className, setAttributes}) {
 		const { width } = attributes;
 		let classes = [];
 		classes.push( className );
@@ -31,7 +31,7 @@ export const settings = {
 					<SelectControl
 					label={ 'Left Column Width' }
 					value={ width }
-					onChange={ ( size ) => setAttributes( { width: size } ) }
+					onChange={ ( size ) => setAttributes({ width: size }) }
 					options={ [
 						{ value: 'fourth', label: '1/4' },
 						{ value: 'third', label: '1/3' },
@@ -52,7 +52,7 @@ export const settings = {
 		];
 	},
 
-	save( { attributes } ) {
+	save({attributes}) {
 		return <InnerBlocks.Content />;
 	}
 };

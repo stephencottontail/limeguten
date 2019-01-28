@@ -2,11 +2,11 @@ import './block.scss';
 import './editor.scss';
 import { registerBlockType } from '@wordpress/blocks';
 import * as button from './blocks/button.js';
-import * as sixty_forty from './blocks/sixty-forty.js';
+import * as sixtyForty from './blocks/sixty-forty.js';
 
 const blocks = [
 	button,
-	sixty_forty
+	sixtyForty
 ];
 
 blocks.forEach( ( block ) => {
