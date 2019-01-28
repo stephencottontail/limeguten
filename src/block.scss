@@ -31,3 +31,59 @@
 	}
 
 }
+
+.wp-block-limeguten-sixty-forty {
+	display: flex;
+	flex-wrap: wrap;
+	border: 0 !important;
+	padding: 10px;
+
+	.wp-block-column {
+		flex: 0 0 calc( 100% - 20px );
+		margin: 10px;
+
+		&:first-child {
+			margin: 10px;
+
+			@at-root .is-fourth-column#{&} {
+				flex-basis: calc( 25% - 20px );
+			}
+
+			@at-root .is-third-column#{&} {
+				flex-basis: calc( 33.33% - 20px );
+			}
+
+			@at-root .is-two-third-column#{&} {
+				flex-basis: calc( 66.66% - 20px );
+			}
+
+			@at-root .is-three-fourth-column#{&} {
+				flex-basis: calc( 75% - 20px );
+			}
+		}
+
+		@include river {
+			margin: 10px;
+
+			@at-root .is-half-column#{&} {
+				flex-basis: calc( 50% - 20px );
+			}
+
+			@at-root .is-fourth-column#{&} {
+				flex-basis: calc( 75% - 20px );
+			}
+
+			@at-root .is-third-column#{&} {
+				flex-basis: calc( 66.66% - 20px );
+			}
+
+			@at-root .is-two-third-column#{&} {
+				flex-basis: calc( 33.33% - 20px );
+			}
+
+			@at-root .is-three-fourth-column#{&} {
+				flex-basis: calc( 25% - 20px );
+			}
+		}
+	}
+}

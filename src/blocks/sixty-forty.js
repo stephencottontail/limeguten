@@ -52,7 +52,16 @@ export const settings = {
 		];
 	},
 
-	save({attributes}) {
-		return <InnerBlocks.Content />;
+	save({attributes, className}) {
+		const { width } = attributes;
+		let classes = [];
+		classes.push( className );
+		classes.push( `is-${width}-column` );
+
+		return (
+			<div className={ classes.join( ' ' ) }>
+				<InnerBlocks.Content />
+			</div>
+		);
 	}
 };
