@@ -43,7 +43,6 @@ export const settings = {
 				</PanelBody>
 			</InspectorControls>,
 			<div className={ classes.join( ' ' ) }>
-				<p>{ 'Sixty-Forty' }</p>
 				<InnerBlocks
 					template={ times( 2, () => [ 'core/column' ] ) }
 					templateLock='all'
