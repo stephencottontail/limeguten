@@ -6,6 +6,49 @@ $colors: (
 	blue: #035595,
 	purple: #4e2875,
 );
-
 $white: #fff;
+
 $button-padding: "10px 40px";
+
+$raindrop: 321px;
+$puddle: 481px;
+$pond: 769px;
+$river: 1025px;
+$lake: 1201px;
+$ocean: 1601px;
+
+@mixin raindrop {
+	@media ( min-width: $raindrop ) {
+		@content;
+	}
+}
+
+@mixin puddle {
+	@media ( min-width: $puddle ) {
+		@content;
+	}
+}
+
+@mixin pond {
+	@media ( min-width: $pond ) {
+		@content;
+	}
+}
+
+@mixin river {
+	@media ( min-width: $river ) {
+		@content;
+	}
+}
+
+@mixin lake {
+	@media ( min-width: $lake ) {
+		@content;
+	}
+}
+
+@mixin ocean {
+	@media ( min-width: $ocean ) {
+		@content;
+	}
+}

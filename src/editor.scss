@@ -41,10 +41,31 @@
 }
 
 .wp-block-limeguten-sixty-forty {
+	border: 1px dashed map-get( $colors, blue );
+	padding: 10px;
 
-	.editor-inner-blocks {
-		border: 1px dashed map-get( $colors, blue );
-		padding: 10px;
+	> .editor-inner-blocks > .editor-block-list__layout {
+		display: flex;
+		flex-wrap: wrap;
+		margin-left: -10px;
+		margin-right: -10px;
+
+		[data-type="core/column"] {
+			flex: 0 0 100%;
+			border: 1px dashed map-get( $colors, blue );
+			margin: 10px;
+
+			&:first-child {
+				border-color: map-get( $colors, red );
+			}
+
+			@at-root .is-half-column#{&} {
+
+				@include river {
+					flex-basis: calc( 50% - 20px );
+				}
+
+			}
+		}
 	}
-
 }

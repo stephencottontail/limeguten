@@ -21,6 +21,9 @@ export const settings = {
 
 	edit( { attributes, className, setAttributes } ) {
 		const { width } = attributes;
+		let classes = [];
+		classes.push( className );
+		classes.push( `is-${width}-column` );
 
 		return [
 			<InspectorControls>
@@ -39,10 +42,10 @@ export const settings = {
 					/>
 				</PanelBody>
 			</InspectorControls>,
-			<div className={ className }>
+			<div className={ classes.join( ' ' ) }>
 				<p>{ 'Sixty-Forty' }</p>
 				<InnerBlocks
-					template={ times( 2, () => [ 'core/column'] ) }
+					template={ times( 2, () => [ 'core/column' ] ) }
 					templateLock='all'
 					allowedBlocks={ 'core/column' } />
 			</div>
