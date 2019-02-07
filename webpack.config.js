@@ -12,74 +12,75 @@ const wplib = [
 	'data'
 ];
 
-let debug = process.env.NODE_ENV !== 'production';
 let blocksCss = new extractCss( {
 	filename: './block.css'
 } );
 let editorCss = new extractCss( {
 	filename: './editor.css'
 } );
-let extractConfig = {
-	use: [
-		{ loader: 'raw-loader' },
-		{
-			loader: 'sass-loader',
-			options: {
-				outputStyle: debug ? 'nested' : 'compressed'
-			}
-		}
-	]
-};
 
-module.exports = {
-	entry: './src/blocks.js',
-	output: {
-		path: __dirname + '/dist',
-		filename: 'blocks.js',
-		library: ['wp', '[name]'],
-		libraryTarget: 'window'
-	},
-	/**
-	 * Setting `externals` allows the use of `import __ from __` syntax for WP's
-	 * built-in JS libraries. They first need to be listed as dependencies for
-	 * the script that's designated as `editor_script` when you first call
-	 * `register_block_type` in PHP.
-	 *
-	 * @link https://www.cssigniter.com/importing-gutenberg-core-wordpress-libraries-es-modules-blocks/
-	 * @link https://webpack.js.org/configuration/externals/
-	 */
-	externals: wplib.reduce((externals, lib) => {
-		externals[`@wordpress/${lib}`] = {
-			window: ['wp', lib]
-		};
-
-		return externals;
-	}, {}),
-	module: {
-		rules: [
+module.exports = ( env = {} ) => {
+	let extractConfig = {
+		use: [
+			{ loader: 'raw-loader' },
 			{
-				test: /\.js$/,
-				exclude: /node_modules/,
-				use: [
-					{
-						loader: 'babel-loader'
-					}
-				]
-			},
-			{
-				test: /editor\.scss$/,
-				exclude: /node_modules/,
-				use: editorCss.extract( extractConfig )
-			},
-			{
-				test: /block\.scss$/,
-				exclude: /node_modules/,
-				use: blocksCss.extract( extractConfig )
+				loader: 'sass-loader',
+				options: {
+					outputStyle: env.production ? 'compressed' : 'nested'
+				}
 			}
 		]
-	},
-	plugins: [
-		blocksCss,
-		editorCss
-	]
+	};
+	return {
+		entry: './src/blocks.js',
+		output: {
+			path: __dirname + '/dist',
+			filename: 'blocks.js',
+			library: ['wp', '[name]'],
+			libraryTarget: 'window'
+		},
+		/**
+		* Setting `externals` allows the use of `import __ from __` syntax for WP's
+		* built-in JS libraries. They first need to be listed as dependencies for
+		* the script that's designated as `editor_script` when you first call
+		* `register_block_type` in PHP.
+		*
+		* @link https://www.cssigniter.com/importing-gutenberg-core-wordpress-libraries-es-modules-blocks/
+		* @link https://webpack.js.org/configuration/externals/
+		*/
+		externals: wplib.reduce((externals, lib) => {
+			externals[`@wordpress/${lib}`] = {
+				window: ['wp', lib]
+			};
+
+			return externals;
+		}, {}),
+		module: {
+			rules: [
+				{
+					test: /\.js$/,
+					exclude: /node_modules/,
+					use: [
+						{
+							loader: 'babel-loader'
+						}
+					]
+				},
+				{
+					test: /editor\.scss$/,
+					exclude: /node_modules/,
+					use: editorCss.extract( extractConfig )
+				},
+				{
+					test: /block\.scss$/,
+					exclude: /node_modules/,
+					use: blocksCss.extract( extractConfig )
+				}
+			]
+		},
+		plugins: [
+			blocksCss,
+			editorCss
+		]
+	}
 }

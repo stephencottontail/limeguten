@@ -35,5 +35,9 @@
     "@wordpress/blocks": "^6.0.6",
     "@wordpress/components": "^7.0.6",
     "@wordpress/element": "^2.1.9"
+  },
+  "scripts": {
+    "build": "npx webpack",
+    "prod": "npx webpack --env.production"
   }
 }
