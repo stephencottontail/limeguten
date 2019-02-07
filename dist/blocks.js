@@ -96,12 +96,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__wordpress_blocks___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__wordpress_blocks__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__blocks_button_js__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__blocks_sixty_forty_js__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__blocks_testimonial_slider_js__ = __webpack_require__(12);
 
 
 
 
 
-const blocks = [__WEBPACK_IMPORTED_MODULE_3__blocks_button_js__, __WEBPACK_IMPORTED_MODULE_4__blocks_sixty_forty_js__];
+
+const blocks = [__WEBPACK_IMPORTED_MODULE_3__blocks_button_js__, __WEBPACK_IMPORTED_MODULE_4__blocks_sixty_forty_js__, __WEBPACK_IMPORTED_MODULE_5__blocks_testimonial_slider_js__];
 blocks.forEach(block => {
   const {
     name,
@@ -17506,6 +17508,57 @@ module.exports = function(module) {
 	}
 	return module;
 };
+
+
+/***/ }),
+/* 12 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__wordpress_element__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__wordpress_element___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__wordpress_element__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__wordpress_components__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__wordpress_components___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__wordpress_components__);
+
+
+const name = 'limeguten/testimonial-slider';
+/* harmony export (immutable) */ __webpack_exports__["name"] = name;
+
+const settings = {
+  title: 'Testimonial Slider',
+  icon: 'move',
+  category: 'limecuda',
+
+  edit({
+    attributes,
+    className,
+    setAttributes
+  }) {
+    return Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_element__["createElement"])("div", {
+      id: "draggable-panel"
+    }, Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_element__["createElement"])(__WEBPACK_IMPORTED_MODULE_1__wordpress_components__["Panel"], {
+      header: "Draggable"
+    }, Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_element__["createElement"])(__WEBPACK_IMPORTED_MODULE_1__wordpress_components__["PanelBody"], null, Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_element__["createElement"])(__WEBPACK_IMPORTED_MODULE_1__wordpress_components__["Draggable"], {
+      elementId: "draggable-panel",
+      transferData: {}
+    }, ({
+      onDraggableStart,
+      onDraggableEnd
+    }) => Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_element__["createElement"])(__WEBPACK_IMPORTED_MODULE_1__wordpress_components__["Dashicon"], {
+      icon: "move",
+      onDragStart: onDraggableStart,
+      onDragEnd: onDraggableEnd,
+      draggable: true
+    })))));
+  },
+
+  save() {
+    return Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_element__["createElement"])("p", null, "Hi");
+  }
+
+};
+/* harmony export (immutable) */ __webpack_exports__["settings"] = settings;
 
 
 /***/ })
