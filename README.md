@@ -8,9 +8,9 @@ Some Gutenberg stuff.
 
 ## TODOs ##
 
-~~* Figure out why both `editor.css` and `block.css` end up with the same CSS despite starting from different SCSS files.~~
+* ~~Figure out why both `editor.css` and `block.css` end up with the same CSS despite starting from different SCSS files.~~
 * WordPress recommends that the majority of your styles live in whatever stylesheet is registered as `style` and editor-specific styles live in whatever stylesheet is registered as `editor-style`. This works because both stylesheets are loaded in the editor while `editor-style` does not load on the frontend.
-~~* There's no difference between development and production environment in webpack~~
+* ~~There's no difference between development and production environment in webpack~~
 
 ## Button ##
 
