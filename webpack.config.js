@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const CssWebpackPlugin = require('mini-css-extract-plugin');
+const extractCss = require('extract-text-webpack-plugin');
 const wplib = [
 	'blocks',
 	'components',
@@ -13,15 +13,25 @@ const wplib = [
 ];
 
 let debug = process.env.NODE_ENV !== 'production';
-let extractEditorStyles = new CssWebpackPlugin({
-	filename: './editor.css'
-});
-let extractBlockStyles = new CssWebpackPlugin({
+let blocksCss = new extractCss( {
 	filename: './block.css'
-})
+} );
+let editorCss = new extractCss( {
+	filename: './editor.css'
+} );
+let extractConfig = {
+	use: [
+		{ loader: 'raw-loader' },
+		{
+			loader: 'sass-loader',
+			options: {
+				outputStyle: debug ? 'nested' : 'compressed'
+			}
+		}
+	]
+};
 
 module.exports = {
-	mode: debug ? 'development' : 'production',
 	entry: './src/blocks.js',
 	output: {
 		path: __dirname + '/dist',
@@ -59,49 +69,17 @@ module.exports = {
 			{
 				test: /editor\.scss$/,
 				exclude: /node_modules/,
-				use: [
-					{
-						loader: CssWebpackPlugin.loader,
-						options: {
-							publicPath: './'
-						}
-					},
-					{
-						loader: 'css-loader'
-					},
-					{
-						loader: 'sass-loader',
-						options: {
-							outputStyle: 'compressed'
-						}
-					}
-				]
+				use: editorCss.extract( extractConfig )
 			},
 			{
 				test: /block\.scss$/,
 				exclude: /node_modules/,
-				use: [
-					{
-						loader: CssWebpackPlugin.loader,
-						options: {
-							publicPath: './'
-						}
-					},
-					{
-						loader: 'css-loader'
-					},
-					{
-						loader: 'sass-loader',
-						options: {
-							outputStyle: 'compressed'
-						}
-					}
-				]
+				use: blocksCss.extract( extractConfig )
 			}
 		]
 	},
 	plugins: [
-		extractEditorStyles,
-		extractBlockStyles
+		blocksCss,
+		editorCss
 	]
 }
