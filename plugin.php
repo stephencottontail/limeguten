@@ -9,7 +9,7 @@
 	 */
 
 	add_action( 'init', function() {
-		wp_register_script( 'limeguten-blocks', plugins_url( 'dist/blocks.js', __FILE__ ), array( 'wp-blocks', 'wp-components', 'wp-element', 'wp-editor' ) );
+		wp_register_script( 'limeguten-blocks', plugins_url( 'dist/blocks.js', __FILE__ ), array( 'wp-blocks', 'wp-components', 'wp-element', 'wp-editor', 'wp-compose' ) );
 		/**
 		 * Despite what some sources may say, it's no longer necessary to have
 		 * any dependencies for the block style, and from my testing, it may
